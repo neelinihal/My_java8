@@ -1,4 +1,4 @@
 # My_java8
-JAVA 8 certified in UDEMY(Tim Buchalka)
+JAVA 8 certified in UDEMY(Tim Buchalka).
 
-Thanks!
+Thank you..
