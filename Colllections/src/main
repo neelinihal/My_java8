@@ -1,0 +1,58 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class main {
+    public static void main(String[] args) {
+      Theatre theatre = new Theatre("mani",8,8);
+//      if (theatre.reserveSeats("B4")){
+//          System.out.println("Please pay");
+//      }else {
+//          System.out.println("Sorry, seat is taken");
+//     }
+        List<Theatre.Seat> copySeat = new ArrayList<>(theatre.seats);
+        printSeat(copySeat);
+
+        copySeat.get(1).reserve();
+        if (theatre.reserveSeats("A02")){
+            System.out.println("please pay for A02");
+        }else {
+            System.out.println("Seat already reserve");
+        }
+
+
+        Collections.reverse(copySeat);
+        printSeat(copySeat);
+        Collections.shuffle(copySeat);
+        printSeat(copySeat);
+        printSeat(theatre.seats);
+
+        Theatre.Seat max = Collections.max(copySeat);
+        Theatre.Seat min = Collections.min(copySeat);
+        System.out.println("the max seat number is "+max.getSeatNumber());
+        System.out.println("The min seat number is "+min.getSeatNumber());
+
+        Collections.shuffle(copySeat);
+        sortList(copySeat);
+        System.out.println("Printing sorted list copy");
+        printSeat(copySeat);
+    }
+
+    public static void printSeat(List<Theatre.Seat> seats){
+        for (Theatre.Seat seat : seats){
+            System.out.println(""+seat.getSeatNumber() +"-> "+seat.getPrice());
+        }
+        System.out.println();
+        System.out.println("=============================================================================");
+    }
+
+    public static void sortList(List<? extends Theatre.Seat> list){
+        for (int i = 0; i < list.size()-1; i++){
+            for (int j = i+1; j < list.size(); j++) {
+                if (list.get(i).compareTo(list.get(j))>0) {
+                    Collections.swap(list, i, j);
+                }
+            }
+        }
+    }
+}
